@@ -13,7 +13,7 @@
     </ValidationProvider>
     <br/>
     <button style="margin-top: 10px; margin-bottom: 50px; color: aquamarine;" @click="gologin">Login</button>
-    <div class="grid-card">
+    <div class="grid-card" id="show">
       <div
         v-for="i in results"
         :key="i.data"
@@ -47,10 +47,12 @@
     },
     methods: {
       gologin() {
+        document.getElementById("show").style.visibility = "visible";
         const url = `https://reqres.in/api/users`
         axios.get(url).then((res) => {
           console.log(res.data.data)
           this.results = res.data.data
+
 
         })
       }
@@ -79,10 +81,11 @@
 
   .grid-card {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr ;
+    grid-template-columns: 1fr 1fr 1fr;
     background-color: #BEE9E8;
-    padding: 10px ;
+    padding: 10px;
     border-radius: 10px;
+    visibility:hidden;
   }
 
 </style>
